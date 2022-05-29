@@ -35,20 +35,20 @@ def print_cells(cells, screen):
             screen.blit(surface, coords)
 
 
-def print_number_move(story_moves, screen):
-    for index in range(len(story_moves)):  # отрисовка номера хода
+def print_number_move(story_moves, screen):  # отрисовка номера хода
+    for index in range(len(story_moves)):
         screen.blit(font.render(f"{index + 1}", True, BLACK), story_moves[index].get_number_coords)
 
 
-def print_border(screen):
-    y = (HEIGHT // 2 - COUNT_CELL_IN_RAW // 2 * HEIGHT_CELL) - BORDER + 2  # отрисовка рамки
+def print_border(screen):  # отрисовка рамки
+    y = (HEIGHT // 2 - COUNT_CELL_IN_RAW // 2 * HEIGHT_CELL) - BORDER + 2
     x = (WIDTH // 2 - COUNT_CELL_IN_RAW // 2 * WIDTH_CELL) - BORDER + 2
     pygame.draw.rect(screen, DARK_BROWN, (x - 2, y - 2, WIDTH_CELL * 8 + BORDER * 1.8, HEIGHT_CELL * 8 + BORDER * 1.8),
                      BORDER)
 
 
-def print_coords_on_border(cells, screen):
-    for number in range(8):  # отрисовка цифр и букв на рамке
+def print_coords_on_border(cells, screen):  # отрисовка цифр и букв на рамке
+    for number in range(8):
         x = cells[7 - number][0].get_coords[0] - SIZE_FONT // 2  # цифры
         y = cells[7 - number][0].get_coords[1] + HEIGHT_CELL // 2 - BORDER // 2
         screen.blit(font.render(f"{number + 1}", True, LIGHT_BLUE), (x, y))
