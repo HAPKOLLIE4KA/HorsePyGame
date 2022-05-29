@@ -1,5 +1,6 @@
 moves = [[0 for i in range(8)] for j in range(8)]
 
+
 def check_value(min_value, current_value, x, y, min_x, min_y):
     if current_value < min_value:
         min_value = current_value
@@ -14,7 +15,8 @@ def new_move(moves, position_x, position_y):
 
     for axis_x in range(position_x - 2, position_x + 2 + 1, 4):
 
-        if 0 <= position_y - 1 < 8 and 0 <= axis_x < 8 and moves[position_y - 1][axis_x] != 1:  # убирает точки, которые выъодят за границу доски и на которых конь уже был
+        if 0 <= position_y - 1 < 8 and 0 <= axis_x < 8 and moves[position_y - 1][
+            axis_x] != 1:  # убирает точки, которые выъодят за границу доски и на которых конь уже был
             value_rating = calculate_rating(moves, axis_x, position_y - 1)  # подсчёт значения рейтинга
             min_x, min_y, min_value = check_value(min_value, value_rating, axis_x, position_y - 1, min_x,
                                                   min_y)  # проверка на минимальное значение
@@ -62,4 +64,3 @@ def calculate_rating(moves, position_x, position_y):
         value_rating += check_rating(position_x + 1, axis_y, moves)
 
     return value_rating
-
